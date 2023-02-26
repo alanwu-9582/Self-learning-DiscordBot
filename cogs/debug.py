@@ -8,7 +8,7 @@ class debug(commands.Cog):
     @commands.command(name="ping", help="顯示延遲")
     async def ping(self, ctx):
         embed=discord.Embed(color=0xec659f)
-        embed.add_fieldd(name="Pong!", value=f"📶 延遲 :{round(self.bot.latency * 1000, 2)} ms" , inline=False)
+        embed.add_field(name="Pong!", value="📶 延遲 : %.2f ms" %(self.bot.latency * 1000), inline=False)
         await ctx.send(embed=embed)
 
 async def setup(bot):
