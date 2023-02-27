@@ -8,7 +8,7 @@ import json
 with open('./setting.json', 'r', encoding="utf8") as jfile:
   jdata = json.load(jfile)
 
-TOKEN = os.environ['ruruhimetoken']
+DISCORD_BOT_TOKEN = os.environ['DISCORD_BOT_TOKEN']
 PREFIX = 'hime.'
 STATUS = discord.Status.idle
 ACTIVITY = discord.Game(name="蘿莉")
@@ -44,7 +44,7 @@ async def load_extensions():
 async def main():
     async with bot:
         await load_extensions()
-        await bot.start(TOKEN)
+        await bot.start(DISCORD_BOT_TOKEN)
 
 if __name__ == "__main__":
     asyncio.run(main())

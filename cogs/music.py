@@ -1,3 +1,5 @@
+#sudo apt-get install ffmpeg
+
 import asyncio
 import functools
 import itertools
@@ -109,7 +111,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
                 except IndexError:
                     raise YTDLError('找不到 `{}` （⊙ｏ⊙）'.format(webpage_url))
 
-        return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS, executable=".\\ffmpeg\\bin\\ffmpeg.exe"), data=info)
+        return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS, executable="./ffmpeg/bin/ffmpeg"), data=info)
 
     @staticmethod
     def parse_duration(duration: int):
@@ -407,7 +409,7 @@ class music(commands.Cog):
                 song = Song(source)
 
                 await ctx.voice_state.songs.put(song)
-                await ctx.send('好耶! `{}` 已加入佇列'.format(str(source)))
+                await ctx.send('好喔! `{}` 已加入佇列'.format(str(source)))
 
     @_join.before_invoke
     @_play.before_invoke

@@ -26,8 +26,8 @@ class calculate(commands.Cog):
             ans = eval(arg)
             await ctx.send(f"`{arg} = {ans}`")
 
-        except:
-            await ctx.send(f"好難喔我不會ㄟ\n`{Exception}`")
+        except Exception as e:
+            await ctx.send(f"好難喔我不會ㄟ\n`{e}`")
 
 async def setup(bot):
     await bot.add_cog(calculate(bot))
