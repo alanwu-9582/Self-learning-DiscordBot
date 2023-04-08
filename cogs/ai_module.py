@@ -2,7 +2,6 @@ import os
 
 import discord
 from discord.ext import commands
-
 import openai
 
 import json
@@ -13,7 +12,7 @@ MODEL_ENGINE = jdata['OPENAI_MODEL_ENGINE']
 openai.api_key = os.environ['OPENAI_API_KEY']
 openai.api_endpoint = "https://api.openai.com"
 
-class ChatGPT(commands.Cog):
+class ai_module(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
@@ -33,9 +32,8 @@ class ChatGPT(commands.Cog):
             )
 
             await ctx.send(response.choices[0].text)
-        except Exception as e:
-            print(e)
-        
+        except Exception as exception:
+            await ctx.send(f"`{exception}`")
 
 async def setup(bot):
-    await bot.add_cog(ChatGPT(bot))
+    await bot.add_cog(ai_module(bot))

@@ -1,6 +1,9 @@
 import discord
 from discord.ext import commands
 
+import googletrans
+translator = googletrans.Translator()
+
 class react(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot

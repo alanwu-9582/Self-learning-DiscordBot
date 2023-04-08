@@ -16,6 +16,31 @@ def QradEqua(a: int, b: int, c: int): #一元二次方程式
     else:
         return f"{(-b - pow(Discriminant, 0.5)) / 2 * a}, {(-b + pow(Discriminant, 0.5)) / 2 * a}"
 
+class Recursion(): #遞迴
+    def __init__(self, a1: int, relation: str):
+        self.a1 = a1
+        self.relation = relation
+        self.sequence = []
+
+    def get_n(self, an):
+        a = [0] + [self.a1 for n in range(an)]
+        for n in range(2, an + 1):
+            a[n] = eval(self.relation)
+
+        self.sequence = a
+        return a[an]
+
+    def get_sequence(self, n):
+        self.get_n(n)
+        return self.sequence
+
+def sigma(k: int, m_n: int, relation: str): #累加
+    array = [0] + [0 for i in range(m_n)]
+    for n in range(k, m_n+1):
+        array[n] = eval(relation)
+        
+    return sum(array)
+
 class calculate(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot

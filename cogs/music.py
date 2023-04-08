@@ -1,5 +1,3 @@
-#sudo apt-get install ffmpeg
-
 import asyncio
 import functools
 import itertools
@@ -43,6 +41,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     FFMPEG_OPTIONS = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
         'options': '-vn',
+        'executable': './ffmpeg/bin/ffmpeg'
     }
 
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
@@ -111,7 +110,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
                 except IndexError:
                     raise YTDLError('找不到 `{}` （⊙ｏ⊙）'.format(webpage_url))
 
-        return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS, executable="./ffmpeg/bin/ffmpeg"), data=info)
+        return cls(ctx, discord.FFmpegPCMAudio(info['url'], **cls.FFMPEG_OPTIONS), data=info)
 
     @staticmethod
     def parse_duration(duration: int):
@@ -395,7 +394,7 @@ class music(commands.Cog):
         ctx.voice_state.loop = not ctx.voice_state.loop
         await ctx.message.add_reaction('✅')
 
-    @commands.command(name='play', aliases=["p"], help="播放所選的音樂")
+    @commands.command(name='play', aliases=["p", "阿瑟播歌"], help="播放所選的音樂")
     async def _play(self, ctx: commands.Context, *, search: str):
         if not ctx.voice_state.voice:
             await ctx.invoke(self._join)
