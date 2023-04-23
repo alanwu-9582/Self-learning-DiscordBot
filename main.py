@@ -9,7 +9,7 @@ with open('./setting.json', 'r', encoding="utf8") as jfile:
   jdata = json.load(jfile)
 
 DISCORD_BOT_TOKEN = os.environ['DISCORD_BOT_TOKEN']
-PREFIX = 'hime.'
+PREFIX = '~'
 STATUS = discord.Status.idle
 ACTIVITY = discord.Game(name="蘿莉")
 

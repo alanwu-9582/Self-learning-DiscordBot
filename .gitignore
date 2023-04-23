@@ -1,4 +1,5 @@
 
+environment.txt
 ffmpeg/bin/ffprobe.exe
 ffmpeg/bin/ffplay.exe
 ffmpeg/bin/ffmpeg.exe

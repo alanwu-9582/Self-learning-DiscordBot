@@ -3,10 +3,7 @@ from discord.ext import commands
 
 import random
 
-import json
-with open('./setting.json', 'r', encoding="utf8") as jfile:
-  jdata = json.load(jfile)
-jfile.close()
+WELCOME_CHANNEL = 1007909237982244865
 
 AFFIXS = [
     ["歡迎 ", "。打聲招呼吧！"], 
@@ -25,8 +22,12 @@ class event(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         affix = random.randint(0, len(AFFIXS)-1)
-        channel = self.bot.get_channel(jdata['welcome_channel'])
+        channel = self.bot.get_channel(WELCOME_CHANNEL)
         await channel.send(f"{AFFIXS[affix][0]}<@{member.id}>{AFFIXS[affix][1]}")
+
+    @commands.Cog.listener()
+    async def on_message(self, msg):
+        pass
 
 async def setup(bot):
     await bot.add_cog(event(bot))
