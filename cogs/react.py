@@ -3,7 +3,7 @@ from discord.ext import commands
 
 import random
 
-class react(commands.Cog):
+class React(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
@@ -39,4 +39,4 @@ class react(commands.Cog):
         await ctx.send(embed=embed)
 
 async def setup(bot):
-    await bot.add_cog(react(bot))
+    await bot.add_cog(React(bot))

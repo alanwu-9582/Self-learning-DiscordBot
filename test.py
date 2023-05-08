@@ -1,34 +1,25 @@
-import requests
-import twstock
+import sqlite3
 
+DATABASE = "RuruhimeLearningData.db" 
+TABLE = "LearningData"
 
-company_name = "台積電"
+conn = sqlite3.connect(DATABASE)
+m_cursor = conn.cursor()
 
-try:
-    stock_id = int(company_name)
+m_cursor.execute(f'''CREATE TABLE IF NOT EXISTS {TABLE} (
+    keyword varchar(128) NOT NULL,
+    response varchar(128) NOT NULL
+);''')
+conn.commit()
 
-except:
-    stock_id = None
-    for code, name in codes.items():
-        if company_name in name:
-            stock_id = code
-            break
+m_cursor.execute(f"DELETE from {TABLE} where keyword = 'Hello';")
+m_cursor.execute(f"INSERT INTO {TABLE} VALUES ('Hello', 'World !')")
+conn.commit()
 
-if stock_id == None:
-    print(f"無法獲取 {company_name} 的資訊")
+m_cursor = m_cursor.execute(f"SELECT * from {TABLE}")
+for row in m_cursor:
+    print(row)
 
-else:
-    url = f"https://mis.twse.com.tw/stock/api/getStockInfo.jsp?ex_ch=tse_{stock_id}.tw"
-    response = requests.get(url)
-    data = response.json()
-
-    if "msgArray" in data:
-        msg = data["msgArray"][0]
-        name = msg["n"]
-        now_price = float(msg["z"])
-        last_price = float(msg["y"])
-        data_date = msg["d"]
-        print(f"{name} ({stock_id}): 目前股價 {now_price}，資料日期 {data_date} 漲跌 ({now_price-last_price})")
-
-    else:
-        print("無法獲取股票資訊")
+conn.commit()
+m_cursor.close()
+conn.close()

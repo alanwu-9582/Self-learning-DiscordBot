@@ -4,7 +4,7 @@ from discord.ext import commands
 import googletrans
 translator = googletrans.Translator()
 
-class traslate(commands.Cog):
+class Traslate(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
@@ -40,4 +40,4 @@ class traslate(commands.Cog):
         await ctx.send(f"{arg} 有 `{round(m_lang.confidence*100, 2)}%` 的機率是 `{googletrans.LANGUAGES[m_lang.lang]}`, 語言編碼: `{m_lang.lang}`")
 
 async def setup(bot):
-    await bot.add_cog(traslate(bot))
+    await bot.add_cog(Traslate(bot))

@@ -15,7 +15,7 @@ AFFIXS = [
     ["", "滑進了蘿莉中"]
     ]
 
-class event(commands.Cog):
+class Event(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
@@ -25,9 +25,5 @@ class event(commands.Cog):
         channel = self.bot.get_channel(WELCOME_CHANNEL)
         await channel.send(f"{AFFIXS[affix][0]}<@{member.id}>{AFFIXS[affix][1]}")
 
-    @commands.Cog.listener()
-    async def on_message(self, msg):
-        pass
-
 async def setup(bot):
-    await bot.add_cog(event(bot))
+    await bot.add_cog(Event(bot))

@@ -4,7 +4,7 @@ from discord.ext import commands
 import requests
 import twstock # 台灣證券交易所
 
-class economic(commands.Cog):
+class Economic(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
@@ -59,4 +59,4 @@ class economic(commands.Cog):
             await ctx.send(f"錯誤._. `{exception}`")
 
 async def setup(bot):
-    await bot.add_cog(economic(bot))
+    await bot.add_cog(Economic(bot))
