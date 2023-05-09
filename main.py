@@ -8,7 +8,7 @@ import json
 with open('./setting.json', 'r', encoding="utf8") as jfile:
   jdata = json.load(jfile)
 
-DISCORD_BOT_TOKEN = os.environ['DISCORD_BOT_TOKEN']
+DISCORD_BOT_TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 PREFIX = '~'
 STATUS = discord.Status.idle
 ACTIVITY = discord.Game(name="蘿莉")

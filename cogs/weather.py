@@ -7,7 +7,7 @@ import os
 
 WEATHER_CHANNEL = 1099314909730312212
 DAILY_TIMES = (6, 0)
-URL = os.environ['WEATHER_API_URL']
+URL = os.environ.get('WEATHER_API_URL')
 
 class Weather(commands.Cog):
     def __init__(self, bot: commands.Bot):
