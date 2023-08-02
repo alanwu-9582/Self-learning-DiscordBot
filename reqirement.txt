@@ -3,3 +3,4 @@
 !pip install lxml
 !pip install twstock
 !pip install apscheduler
+!pip install instaloader

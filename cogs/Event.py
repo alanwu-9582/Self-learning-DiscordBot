@@ -30,7 +30,7 @@ class Event(commands.Cog):
     async def on_message(self, msg):
         if not msg.author.bot and msg.content: # 只記錄文字訊息
             with open("chat_log.txt", "a", encoding="utf-8") as f:
-                f.write(f"{msg.created_at} | {msg.author.name}#{msg.author.discriminator} | {msg.content}\n")
+                f.write(f"{msg.created_at} | {msg.channel} | {msg.author} | {msg.content}\n")
 
 
 async def setup(bot):

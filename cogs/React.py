@@ -9,7 +9,7 @@ class React(commands.Cog):
 
     @commands.command(name="hello", help="Hello")
     async def hello(self, ctx):
-        await ctx.send("哈囉! 可以使用 `!help` 獲取更多指令的使用方式哇!ヾ(•ω•`)o")
+        await ctx.send("哈囉! 可以使用 `~help` 獲取更多指令的使用方式哇!ヾ(•ω•`)o")
 
     @commands.command(name="echo", help="覆誦訊息")
     async def echo(self, ctx, *,msg):
